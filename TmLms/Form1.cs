@@ -28,6 +28,14 @@ namespace TmLms
         public void AddModule()
         {
             Form form = new Form();
+            TextBox modName = new TextBox()
+            {
+                Dock = DockStyle.Fill,
+            };
+            TextBox modDesc = new TextBox()
+            {
+                Dock = DockStyle.Fill,
+            };
 
             TableLayoutPanel Container1 = new TableLayoutPanel()
             {
@@ -61,13 +69,11 @@ namespace TmLms
 
             Container2.Controls.Add(
                 new Label() { Text = "Module Name:", Font = new Font("Arial", 18), TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 0);
-            Container2.Controls.Add(
-                new TextBox() { Dock = DockStyle.Fill }, 0, 1);
+            Container2.Controls.Add(modName, 0, 1);
 
             Container2.Controls.Add(
                 new Label() { Text = "Module Description:", Font = new Font("Arial", 18), TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 1, 0);
-            Container2.Controls.Add(
-                new TextBox() { Dock = DockStyle.Fill }, 1, 1);
+            Container2.Controls.Add(modDesc, 1, 1);
 
             form.ShowDialog();
         }

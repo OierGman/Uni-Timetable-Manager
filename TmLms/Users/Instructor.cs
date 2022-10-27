@@ -8,5 +8,6 @@ namespace TmLms.Users
 {
     internal class Instructor
     {
+
     }
 }
