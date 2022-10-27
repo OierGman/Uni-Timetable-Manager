@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace TmLms.Users
 {
-    internal class Administrator
+    internal class Administrator : Person
     {
+        public Administrator(string name, string userID) : base(name, userID)
+        {
+
+        }
+
         public void CreateCourse()
         {
 
