@@ -9,13 +9,21 @@ namespace TmLms
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            updateButton();
+            TM.Module testModule = new TM.Module("Test1", "");
+            testModule.Name = "Software Engineering";
+            testModule.Description = "";
+            testModule.Credits = (TM.Module.CreditEnum)20;
+            testModule.Level = (TM.Module.LevelEnum)2;
+
+            TMEngine.Instance.ModuleDictionary.Add(1, testModule);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // create course
-            AddCourse();
+            // AddCourse();
+            // button1.Text = TMEngine.Instance.ModuleDictionary[1].Name;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -23,7 +31,33 @@ namespace TmLms
             // create module
             AddModule();
         }
+        private void comboBoxUserType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateButton();
+        }
 
+        private void updateButton()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+
+            switch (comboBoxUserType.SelectedIndex)
+            {
+                case 0:
+                    button1.Enabled = true;
+                    goto case 1;
+                case 1:
+                    button2.Enabled = true;
+                    goto case 2;
+                case 2:
+                    button3.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
+                
+        }
         #region dynamic UI
         public void AddModule()
         {
@@ -100,6 +134,7 @@ namespace TmLms
             Container1.Controls.Add(
                 new Label() { Text = "Create a New Course", Font = new Font("Arial", 18), TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 0);
         }
+
 
         #endregion
 

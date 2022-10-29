@@ -31,6 +31,7 @@
             this.comboBoxUserType = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxUserType
@@ -45,6 +46,7 @@
             this.comboBoxUserType.Name = "comboBoxUserType";
             this.comboBoxUserType.Size = new System.Drawing.Size(129, 23);
             this.comboBoxUserType.TabIndex = 0;
+            this.comboBoxUserType.SelectedIndexChanged += new System.EventHandler(this.comboBoxUserType_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -68,11 +70,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(234, 76);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 37);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "View TimeTable";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 270);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxUserType);
@@ -89,5 +102,6 @@
         private ComboBox comboBoxUserType;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
