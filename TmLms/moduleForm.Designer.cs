@@ -29,19 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxCredits = new System.Windows.Forms.ComboBox();
             this.AddModuleButton = new System.Windows.Forms.Button();
-            this.checkBoxCore = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxAdmin = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,8 +52,6 @@
             this.groupBox1.Controls.Add(this.comboBoxLevel);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comboBoxCredits);
-            this.groupBox1.Controls.Add(this.AddModuleButton);
-            this.groupBox1.Controls.Add(this.checkBoxCore);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBoxAdmin);
             this.groupBox1.Controls.Add(this.label2);
@@ -68,6 +65,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create a Module";
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(3, 335);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(618, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -126,16 +134,6 @@
             this.AddModuleButton.UseVisualStyleBackColor = true;
             this.AddModuleButton.Click += new System.EventHandler(this.AddModuleButton_Click);
             // 
-            // checkBoxCore
-            // 
-            this.checkBoxCore.AutoSize = true;
-            this.checkBoxCore.Location = new System.Drawing.Point(266, 146);
-            this.checkBoxCore.Name = "checkBoxCore";
-            this.checkBoxCore.Size = new System.Drawing.Size(95, 19);
-            this.checkBoxCore.TabIndex = 7;
-            this.checkBoxCore.Text = "Core Module";
-            this.checkBoxCore.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -185,17 +183,6 @@
             this.textBoxName.Size = new System.Drawing.Size(164, 23);
             this.textBoxName.TabIndex = 1;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(3, 335);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(618, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // moduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -223,7 +210,6 @@
         private Label label3;
         private ComboBox comboBoxAdmin;
         private Button AddModuleButton;
-        private CheckBox checkBoxCore;
         private Label label4;
         private ComboBox comboBoxCredits;
         private Label label5;
