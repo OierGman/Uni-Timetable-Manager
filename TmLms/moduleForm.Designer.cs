@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxCredits = new System.Windows.Forms.ComboBox();
             this.AddModuleButton = new System.Windows.Forms.Button();
+            this.checkBoxCore = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxAdmin = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,6 +53,8 @@
             this.groupBox1.Controls.Add(this.comboBoxLevel);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comboBoxCredits);
+            this.groupBox1.Controls.Add(this.AddModuleButton);
+            this.groupBox1.Controls.Add(this.checkBoxCore);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBoxAdmin);
             this.groupBox1.Controls.Add(this.label2);
@@ -122,6 +125,16 @@
             this.AddModuleButton.Text = "Add Module";
             this.AddModuleButton.UseVisualStyleBackColor = true;
             this.AddModuleButton.Click += new System.EventHandler(this.AddModuleButton_Click);
+            // 
+            // checkBoxCore
+            // 
+            this.checkBoxCore.AutoSize = true;
+            this.checkBoxCore.Location = new System.Drawing.Point(266, 146);
+            this.checkBoxCore.Name = "checkBoxCore";
+            this.checkBoxCore.Size = new System.Drawing.Size(95, 19);
+            this.checkBoxCore.TabIndex = 7;
+            this.checkBoxCore.Text = "Core Module";
+            this.checkBoxCore.UseVisualStyleBackColor = true;
             // 
             // label3
             // 

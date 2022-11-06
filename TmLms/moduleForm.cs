@@ -53,7 +53,7 @@ namespace TmLms
             }
         }
 
-        
+
         public string GenerateCode(string s)
         {
             // generate random module code usinf first letter of everyword and appending a large random int
