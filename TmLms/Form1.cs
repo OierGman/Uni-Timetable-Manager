@@ -10,8 +10,8 @@ namespace TmLms
         private void Form1_Load(object sender, EventArgs e)
         {
             updateButton();
-            TM.Module testModule = new TM.Module("Test1", "");
-            testModule.Name = "Software Engineering";
+            TM.Module testModule = new TM.Module("", "");
+            // testModule.Name = "Software Engineering";
             testModule.Description = "";
             testModule.Credits = (TM.Module.CreditEnum)20;
             testModule.Level = (TM.Module.LevelEnum)2;
@@ -23,13 +23,16 @@ namespace TmLms
         {
             // create course
             // AddCourse();
-            // button1.Text = TMEngine.Instance.ModuleDictionary[1].Name;
+            button1.Text = TMEngine.Instance.ModuleDictionary[1].Name;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // create module
-            AddModule();
+            //AddModule();
+
+            moduleForm x = new moduleForm();
+            x.Show();
         }
         private void comboBoxUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -55,9 +58,9 @@ namespace TmLms
                     break;
                 default:
                     break;
-            }
-                
+            }     
         }
+
         #region dynamic UI
         public void AddModule()
         {

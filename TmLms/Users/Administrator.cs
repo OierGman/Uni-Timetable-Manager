@@ -8,6 +8,8 @@ namespace TmLms.Users
 {
     internal class Administrator : Person
     {
+        public List<Administrator> administrators = new List<Administrator>();
+
         public Administrator(string name, string userID) : base(name, userID)
         {
 
