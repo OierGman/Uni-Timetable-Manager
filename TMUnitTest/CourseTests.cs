@@ -42,8 +42,9 @@ namespace TMUnitTest
             module1.Level = TmLms.TM.Module.LevelEnum.SIX;
 
             TmLms.TM.Module module2 = new TmLms.TM.Module("U101", "");
-            module1.Credits = TmLms.TM.Module.CreditEnum.SIXTY;
-            module1.Level = TmLms.TM.Module.LevelEnum.SIX;
+            // changed from module1 to module2
+            module2.Credits = TmLms.TM.Module.CreditEnum.SIXTY;
+            module2.Level = TmLms.TM.Module.LevelEnum.SIX;
 
             //Act
 
@@ -51,8 +52,10 @@ namespace TMUnitTest
             bool isModuleNotAdded = cource.AddModule(module2, isCore);
 
             //Assert
-            Assert.False(isModuleAdded);
-            Assert.True(isModuleNotAdded);
+            // changed from false to true
+            Assert.True(isModuleAdded);
+            // changed from true to false
+            Assert.False(isModuleNotAdded);
         }
 
         /// <summary>

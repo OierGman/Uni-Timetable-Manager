@@ -8,6 +8,9 @@ namespace TmLms.TM
 {
     public class Course
     {
+        int lvlfour;
+        int lvlfive;
+        int lvlsix;
         /// <summary>
         /// Adds a module to the course. It checks if the moudle can be added or not.
         /// </summary>
@@ -16,7 +19,61 @@ namespace TmLms.TM
         /// <returns>True if succesfully added, False if not</returns>
         public bool AddModule(Module moduleToAdd, bool isCore)
         {
-            return false;
+            if (isCore == false)
+            {
+                switch ((int)moduleToAdd.Level)
+                {
+                    case 4:
+                        if (lvlfour + (int)moduleToAdd.Credits > 120 || (int)moduleToAdd.Credits > 20)
+                        {
+                            return false;
+                        }
+                        lvlfour += (int)moduleToAdd.Credits;
+                        break;
+                    case 5:
+                        if (lvlfive + (int)moduleToAdd.Credits > 120 || (int)moduleToAdd.Credits > 40)
+                        {
+                            return false;
+                        }
+                        lvlfive += (int)moduleToAdd.Credits;
+                        break;
+                    default:
+                        if (lvlsix + (int)moduleToAdd.Credits > 100)
+                        {
+                            return false;
+                        }
+                        lvlsix += (int)moduleToAdd.Credits;
+                        break;
+                }
+            }
+            else
+            {
+                switch ((int)moduleToAdd.Level)
+                {
+                    case 4:
+                        if (lvlfour + (int)moduleToAdd.Credits > 120)
+                        {
+                            return false;
+                        }
+                        lvlfour += (int)moduleToAdd.Credits;
+                        break;
+                    case 5:
+                        if (lvlfive + (int)moduleToAdd.Credits > 120)
+                        {
+                            return false;
+                        }
+                        lvlfive += (int)moduleToAdd.Credits;
+                        break;
+                    default:
+                        if (lvlsix + (int)moduleToAdd.Credits > 120)
+                        {
+                            return false;
+                        }
+                        lvlsix += (int)moduleToAdd.Credits;
+                        break;
+                }
+            }
+            return true;
         }
 
         public void DeleteModule()
