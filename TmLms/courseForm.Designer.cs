@@ -125,9 +125,9 @@
             // 
             // buttonCreateModule
             // 
-            this.buttonCreateModule.Location = new System.Drawing.Point(233, 116);
+            this.buttonCreateModule.Location = new System.Drawing.Point(397, 38);
             this.buttonCreateModule.Name = "buttonCreateModule";
-            this.buttonCreateModule.Size = new System.Drawing.Size(158, 33);
+            this.buttonCreateModule.Size = new System.Drawing.Size(146, 33);
             this.buttonCreateModule.TabIndex = 10;
             this.buttonCreateModule.Text = "Create More Modules";
             this.buttonCreateModule.UseVisualStyleBackColor = true;
@@ -154,12 +154,13 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(233, 155);
+            this.buttonDelete.Location = new System.Drawing.Point(233, 297);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(158, 33);
             this.buttonDelete.TabIndex = 7;
-            this.buttonDelete.Text = "Delete Modules";
+            this.buttonDelete.Text = "Delete Mode";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonAddOpt
             // 
@@ -197,6 +198,7 @@
             this.checkedListBoxCourses.Name = "checkedListBoxCourses";
             this.checkedListBoxCourses.Size = new System.Drawing.Size(221, 292);
             this.checkedListBoxCourses.TabIndex = 1;
+            this.checkedListBoxCourses.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxCourses_ItemCheck);
             // 
             // checkedListBoxModules
             // 

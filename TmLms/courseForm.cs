@@ -13,6 +13,7 @@ namespace TmLms
     public partial class courseForm : Form
     {
         bool isCore = false;
+        int courseIndex = 0;
 
         public courseForm()
         {
@@ -42,10 +43,14 @@ namespace TmLms
                 MessageBox.Show(ex.Message);
             }
 
+            checkedListBoxCourses.Items.Clear();
+
             foreach (var i in TMEngine.Instance.CourseDictionary)
             {
                 checkedListBoxCourses.Items.Add(i.Value.Name);
             }
+
+            textBoxName.Text = "";
         }
 
         public string GenerateCode(string s)
@@ -98,14 +103,24 @@ namespace TmLms
         {
             if (checkedListBoxModules.CheckedItems.Count > 0)
             {
-                for (int i = 0; i < checkedListBoxModules.CheckedItems.Count; i++)
+                for (int i = 0; i < checkedListBoxModules.Items.Count; i++)
                 {
-                    if (CheckAdd(i + 1, isCore))
+                    if (checkedListBoxModules.GetItemCheckState(i) == CheckState.Checked)
                     {
-                        if (isCore)
+                        if (CheckAdd(i + 1, isCore))
                         {
-                            TMEngine.Instance.CourseDictionary[Int32.Parse((string)checkedListBoxCourses.CheckedItems[0])].CoreCourseList.
-                                Add(TMEngine.Instance.ModuleDictionary[i]);
+                            if (isCore)
+                            {
+                                TMEngine.Instance.CourseDictionary[courseIndex].CoreCourseList.
+                                    Add(TMEngine.Instance.ModuleDictionary[i + 1]);
+                                MessageBox.Show("Added as core modules");
+                            }
+                            else
+                            {
+                                TMEngine.Instance.CourseDictionary[courseIndex].OptionalCourseList.
+                                    Add(TMEngine.Instance.ModuleDictionary[i + 1]);
+                                MessageBox.Show("Added as optional modules");
+                            }
                         }
                     }
                 }
@@ -125,6 +140,28 @@ namespace TmLms
             }
         }
 
-        
+        private void checkedListBoxCourses_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked && checkedListBoxCourses.CheckedItems.Count > 0)
+            {
+                // only one check box active at any given time
+                checkedListBoxCourses.ItemCheck -= checkedListBoxCourses_ItemCheck;
+                checkedListBoxCourses.SetItemChecked(checkedListBoxCourses.CheckedIndices[0], false);
+                checkedListBoxCourses.ItemCheck += checkedListBoxCourses_ItemCheck;
+            }
+            courseIndex = e.Index;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (courseIndex == 0)
+            {
+                MessageBox.Show("Select course to delete modules from");
+            }
+            else
+            {
+
+            }
+        }
     }
 }
