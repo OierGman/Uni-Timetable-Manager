@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.AddModuleButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxLevel = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxCredits = new System.Windows.Forms.ComboBox();
-            this.AddModuleButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxAdmin = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +65,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create a Module";
+            // 
+            // AddModuleButton
+            // 
+            this.AddModuleButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AddModuleButton.Location = new System.Drawing.Point(3, 289);
+            this.AddModuleButton.Name = "AddModuleButton";
+            this.AddModuleButton.Size = new System.Drawing.Size(618, 46);
+            this.AddModuleButton.TabIndex = 8;
+            this.AddModuleButton.Text = "Add Module";
+            this.AddModuleButton.UseVisualStyleBackColor = true;
+            this.AddModuleButton.Click += new System.EventHandler(this.AddModuleButton_Click);
             // 
             // button1
             // 
@@ -122,17 +133,6 @@
             this.comboBoxCredits.Name = "comboBoxCredits";
             this.comboBoxCredits.Size = new System.Drawing.Size(98, 23);
             this.comboBoxCredits.TabIndex = 9;
-            // 
-            // AddModuleButton
-            // 
-            this.AddModuleButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddModuleButton.Location = new System.Drawing.Point(3, 289);
-            this.AddModuleButton.Name = "AddModuleButton";
-            this.AddModuleButton.Size = new System.Drawing.Size(618, 46);
-            this.AddModuleButton.TabIndex = 8;
-            this.AddModuleButton.Text = "Add Module";
-            this.AddModuleButton.UseVisualStyleBackColor = true;
-            this.AddModuleButton.Click += new System.EventHandler(this.AddModuleButton_Click);
             // 
             // label3
             // 

@@ -30,7 +30,9 @@ namespace TmLms
         private void button1_Click(object sender, EventArgs e)
         {
             // create course
-            button1.Text = TMEngine.Instance.ModuleDictionary[1].Name;
+            courseForm x = new courseForm();
+            x.Show();
+            //button1.Text = TMEngine.Instance.ModuleDictionary[1].Name;
         }
 
         private void button2_Click(object sender, EventArgs e)
