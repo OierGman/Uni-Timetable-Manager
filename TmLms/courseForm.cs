@@ -13,16 +13,25 @@ namespace TmLms
     public partial class courseForm : Form
     {
         bool isCore = false;
+
         public courseForm()
         {
             InitializeComponent();
+        }
+
+        private void courseForm_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Users.Instructor.instructors.Count; i++)
+            {
+                comboBoxDirector.Items.Add(Users.Instructor.instructors[i].name);
+            }
         }
 
         private void createCourse_Click(object sender, EventArgs e)
         {
             try
             {
-                TM.Course newCourse = new TM.Course(GenerateCode(textBoxName.Text), textBoxName.Text, Users.Instructor.instructors[comboBoxDirector.SelectedIndex]);
+                TM.CourseInfo newCourse = new TM.CourseInfo(GenerateCode(textBoxName.Text), textBoxName.Text, Users.Instructor.instructors[comboBoxDirector.SelectedIndex]);
 
                 TMEngine.Instance.CourseDictionary.Add((TMEngine.Instance.CourseDictionary.Count) + 1, newCourse);
 
@@ -91,20 +100,31 @@ namespace TmLms
             {
                 for (int i = 0; i < checkedListBoxModules.CheckedItems.Count; i++)
                 {
-                    
+                    if (CheckAdd(i + 1, isCore))
+                    {
+                        if (isCore)
+                        {
+                            TMEngine.Instance.CourseDictionary[Int32.Parse((string)checkedListBoxCourses.CheckedItems[0])].CoreCourseList.
+                                Add(TMEngine.Instance.ModuleDictionary[i]);
+                        }
+                    }
                 }
             }
         }
 
-        public static void CheckAdd(int i)
+        public static bool CheckAdd(int i, bool isCore)
         {
             var x = new TM.Course();
-
-            if (x.AddModule(TMEngine.Instance.ModuleDictionary[i], false))
+            if (x.AddModule(TMEngine.Instance.ModuleDictionary[i], isCore))
             {
-
+                return true; 
+            }
+            else
+            {
+                return false;
             }
         }
 
+        
     }
 }

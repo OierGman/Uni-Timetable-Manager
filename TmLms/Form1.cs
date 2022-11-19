@@ -25,6 +25,11 @@ namespace TmLms
             Users.Administrator.administrators.Add(new Users.Administrator("Admin3", "003"));
             Users.Administrator.administrators.Add(new Users.Administrator("Admin4", "004"));
             Users.Administrator.administrators.Add(new Users.Administrator("Admin5", "005"));
+
+            Users.Instructor.instructors.Add(new Users.Instructor("Tim", "001"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Bill", "004"));
         }
 
         private void button1_Click(object sender, EventArgs e)

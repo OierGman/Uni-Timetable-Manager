@@ -11,22 +11,6 @@ namespace TmLms.TM
         int lvlfour;
         int lvlfive;
         int lvlsix;
-        /*
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public object CourseDirector { get; set; }
-        public List<object> CoreCourseList { get; set; }
-        public List<object> OptionalCourseList { get; set; }
-
-        public Course(string code, string name, object courseDirector)
-        {
-            Code = code;
-            Name = name;    
-            CourseDirector = courseDirector;
-            CoreCourseList = new List<object>();
-            OptionalCourseList = new List<object>();
-        }
-        */
         /// <summary>
         /// Adds a module to the course. It checks if the moudle can be added or not.
         /// </summary>
@@ -98,5 +82,23 @@ namespace TmLms.TM
         }
 
 
+    }
+
+    public class CourseInfo
+    {
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public object CourseDirector { get; set; }
+        public List<object> CoreCourseList { get; set; }
+        public List<object> OptionalCourseList { get; set; }
+
+        public CourseInfo(string code, string name, object courseDirector)
+        {
+            Code = code;
+            Name = name;
+            CourseDirector = courseDirector;
+            CoreCourseList = new List<object>();
+            OptionalCourseList = new List<object>();
+        }
     }
 }

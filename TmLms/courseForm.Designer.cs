@@ -215,6 +215,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "courseForm";
             this.Text = "courseForm";
+            this.Load += new System.EventHandler(this.courseForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

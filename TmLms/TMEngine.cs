@@ -8,7 +8,7 @@ namespace TmLms
 {
     public sealed class TMEngine
     {
-        public Dictionary<int,TM.Course> CourseDictionary { get; set; }
+        public Dictionary<int,TM.CourseInfo> CourseDictionary { get; set; }
 
         public Dictionary<int, TM.Module> ModuleDictionary { get; set; }
 
@@ -21,7 +21,7 @@ namespace TmLms
 
         private TMEngine()
         {
-            CourseDictionary = new Dictionary<int, TM.Course>();
+            CourseDictionary = new Dictionary<int, TM.CourseInfo>();
             ModuleDictionary = new Dictionary<int, TM.Module>();
         }
 
