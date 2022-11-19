@@ -10,7 +10,7 @@
 ###	A module shall be defaulted to 20 credits when created if not specified.
 ##	A module shall be able to have a schedule of delivery.
 ###	The schedule shall record the time and the dates of delivery together with a description if needed.
-Course
+# Course
 ##	A course shall be valid when it has a single instructor member to act as course director.
 ##	A course shall only have 3 levels (years) (4,5 and 6).
 ##	A course shall not exceed 120 Credits per Level.
