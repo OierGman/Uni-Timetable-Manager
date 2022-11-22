@@ -9,9 +9,9 @@ namespace TmLms
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            // testing
+            // module test
             updateButton();
-            TM.Module testModule = new TM.Module("", "");
+            TM.Module testModule = new TM.Module("SE1", "");
             testModule.Name = "Software Engineering";
             testModule.Description = "";
             testModule.Credits = (TM.Module.CreditEnum)20;
@@ -30,6 +30,14 @@ namespace TmLms
             Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
             Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
             Users.Instructor.instructors.Add(new Users.Instructor("Bill", "004"));
+
+            // quiz test
+            var wrong_ans = new List<string>()
+            {
+                "not the answer", "anothernot the answer", "still not the answer"
+            };
+            Quiz.questions.Add(new Quiz(TMEngine.Instance.ModuleDictionary[0].Code, 
+                "multiple choice", "is this a question?", "the answer", wrong_ans));
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -14,20 +14,5 @@ namespace TmLms.Users
         {
 
         }
-
-        public void CreateCourse()
-        {
-
-        }
-
-        public void CreateModule()
-        {
-
-        }
-
-        public void DeleteCourse()
-        { 
-        
-        }
     }
 }
