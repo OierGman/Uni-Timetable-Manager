@@ -80,7 +80,7 @@ namespace TmLms
                     break;
             }     
         }
-
+        // not in use
         #region dynamic UI
         public void AddModule()
         {
