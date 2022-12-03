@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace TmLms
 {
-    internal class Quiz
+    public class Questions
     {
-
-        public static List<Quiz> questions = new List<Quiz>();
-        public string ModuleCode { get; set; }
+        public static List<Questions> questions = new List<Questions>();
         public string Type { get; set; }
         public string Question { get; set; }
         public List<string> Correct_Ans { get; set; }
         public List<string> Incorrect_Ans { get; set; }
+        public int Marks { get; set; }
 
         /// <summary>
         /// Create a new Quiz question and store attributes. The creator of the quiz can create as many questions as
@@ -31,13 +30,28 @@ namespace TmLms
         /// answers as collection
         /// <param name="incorrect_Ans"></param>
         /// incorrect answers as collection
-        public Quiz(string moduleCode, string type, string question, List<string> correct_Ans, List<string> incorrect_Ans)
+        public Questions(string type, string question, List<string> correct_Ans, List<string> incorrect_Ans, int marks)
         {
-            ModuleCode = moduleCode;
             Type = type;
             Question = question;
             Correct_Ans = correct_Ans;
             Incorrect_Ans = incorrect_Ans;
+            Marks = marks;
         }
     }
+
+    public class Quiz
+    {
+        public List<Quiz> quiz = new List<Quiz>();
+
+        public string Name { get; set; }
+        public List<Questions> QuizBuild { get; set; }
+
+        public Quiz(string name, List<Questions> quizBuild)
+        {
+            Name = name;
+            QuizBuild = quizBuild;
+        }
+    }
+
 }

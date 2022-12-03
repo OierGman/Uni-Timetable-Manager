@@ -98,7 +98,9 @@ namespace TmLms
 
         private void buttonAddQuiz_Click(object sender, EventArgs e)
         {
-
+            //TMEngine.Instance.ModuleDictionary[listBoxModules.SelectedIndex+1].Quiz = 
+            quizForm x = new quizForm();
+            x.Show();
         }
     }
 }

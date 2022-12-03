@@ -55,7 +55,7 @@ namespace TmLms.TM
         /// <summary>
         /// Quiz stored as part of module. Quiz is nullable
         /// </summary>
-        public object? Quiz { get; set; }
+        public Quiz Quiz { get; set; }
 
         public Module(string code, object AdminPerson)
         {

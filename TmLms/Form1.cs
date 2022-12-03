@@ -40,7 +40,7 @@ namespace TmLms
             {
                 "the answer"
             };
-            Quiz.questions.Add(new Quiz("test", "multiple choice", "is this a question?", correct_ans, wrong_ans));
+            Questions.questions.Add(new Questions("multiple choice", "is this a question?", correct_ans, wrong_ans, 5));
             // Quiz.questions.Add(new Quiz(TMEngine.Instance.ModuleDictionary[0].Code, 
             //    "multiple choice", "is this a question?", correct_ans, wrong_ans));
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
             this.listBoxModules = new System.Windows.Forms.ListBox();
             this.buttonAddQuiz = new System.Windows.Forms.Button();
             this.AddModuleButton = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.buttonEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create a Module";
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(507, 262);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(114, 23);
+            this.buttonEdit.TabIndex = 16;
+            this.buttonEdit.Text = "Edit Module";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            // 
             // listBoxModules
             // 
             this.listBoxModules.FormattingEnabled = true;
@@ -87,7 +96,7 @@
             this.buttonAddQuiz.Name = "buttonAddQuiz";
             this.buttonAddQuiz.Size = new System.Drawing.Size(114, 23);
             this.buttonAddQuiz.TabIndex = 14;
-            this.buttonAddQuiz.Text = "Add Quiz";
+            this.buttonAddQuiz.Text = "Create Quiz";
             this.buttonAddQuiz.UseVisualStyleBackColor = true;
             this.buttonAddQuiz.Click += new System.EventHandler(this.buttonAddQuiz_Click);
             // 
@@ -115,7 +124,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(254, 66);
+            this.label5.Location = new System.Drawing.Point(318, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 15);
             this.label5.TabIndex = 12;
@@ -130,7 +139,7 @@
             "4",
             "5",
             "6"});
-            this.comboBoxLevel.Location = new System.Drawing.Point(254, 84);
+            this.comboBoxLevel.Location = new System.Drawing.Point(318, 84);
             this.comboBoxLevel.Name = "comboBoxLevel";
             this.comboBoxLevel.Size = new System.Drawing.Size(98, 23);
             this.comboBoxLevel.TabIndex = 11;
@@ -138,7 +147,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(368, 66);
+            this.label4.Location = new System.Drawing.Point(432, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 15);
             this.label4.TabIndex = 10;
@@ -153,7 +162,7 @@
             "20",
             "40",
             "60"});
-            this.comboBoxCredits.Location = new System.Drawing.Point(368, 84);
+            this.comboBoxCredits.Location = new System.Drawing.Point(432, 84);
             this.comboBoxCredits.Name = "comboBoxCredits";
             this.comboBoxCredits.Size = new System.Drawing.Size(98, 23);
             this.comboBoxCredits.TabIndex = 9;
@@ -197,7 +206,7 @@
             // 
             this.textBoxDesc.Location = new System.Drawing.Point(254, 38);
             this.textBoxDesc.Name = "textBoxDesc";
-            this.textBoxDesc.Size = new System.Drawing.Size(324, 23);
+            this.textBoxDesc.Size = new System.Drawing.Size(358, 23);
             this.textBoxDesc.TabIndex = 2;
             // 
             // textBoxName
@@ -206,15 +215,6 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(164, 23);
             this.textBoxName.TabIndex = 1;
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Location = new System.Drawing.Point(507, 262);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(114, 23);
-            this.buttonEdit.TabIndex = 16;
-            this.buttonEdit.Text = "Edit Module";
-            this.buttonEdit.UseVisualStyleBackColor = true;
             // 
             // moduleForm
             // 
