@@ -26,6 +26,8 @@ namespace TmLms
             {
                 comboBoxAdmin.Items.Add(Users.Administrator.administrators[i].name);
             }
+
+            getModules();
         }
 
         private void AddModuleButton_Click(object sender, EventArgs e)
@@ -51,13 +53,14 @@ namespace TmLms
                 MessageBox.Show(ex.Message);
                 MessageBox.Show("Must Select Admin Person");
             }
+            getModules();
         }
 
 
         public string GenerateCode(string s)
         {
             // generate random module code usinf first letter of everyword and appending a large random int
-            string code = null;
+            string? code = null;
             int randomNumber = new Random().Next(100000, 999999);
 
             string[] strings = s.Split(' ');
@@ -68,7 +71,6 @@ namespace TmLms
             }
 
             code += randomNumber.ToString();
-
             return code;
         }
 
@@ -79,9 +81,24 @@ namespace TmLms
             comboBoxAdmin.SelectedIndex = 0;
         }
 
+        public void getModules()
+        {
+            listBoxModules.Items.Clear();
+
+            foreach (var i in TMEngine.Instance.ModuleDictionary)
+            {
+                listBoxModules.Items.Add(i.Value.Code + "---" + i.Value.Name + "---" + i.Value.Description + "--- Level:" + i.Value.Level + "--- Credits:" + i.Value.Credits);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonAddQuiz_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

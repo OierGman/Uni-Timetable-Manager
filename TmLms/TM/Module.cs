@@ -52,6 +52,11 @@ namespace TmLms.TM
         /// </summary>
         public SortedSet<object> Members { get; set; }
 
+        /// <summary>
+        /// Quiz stored as part of module. Quiz is nullable
+        /// </summary>
+        public object? Quiz { get; set; }
+
         public Module(string code, object AdminPerson)
         {
             Code = code;
@@ -59,6 +64,7 @@ namespace TmLms.TM
             Description = "";
             Members = new SortedSet<object>();
             Members.Add(AdminPerson);
+            Quiz = null;
         }
 
         /// <summary>
