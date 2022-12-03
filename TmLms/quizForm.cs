@@ -72,6 +72,8 @@ namespace TmLms
         public void updateForm()
         {
             /*
+             * case to meaning
+             
                 Multiple Choice
                 Multiple Answer
                 Boolean
@@ -169,6 +171,7 @@ namespace TmLms
             Quiz newQuiz = new Quiz(textBoxQuizName.Text, qlist);
             TMEngine.Instance.ModuleDictionary[comboBoxModules.SelectedIndex+1].Quiz = newQuiz;
 
+            // testing
             MessageBox.Show(TMEngine.Instance.ModuleDictionary[1].Quiz.Name + "\n\r" + TMEngine.Instance.ModuleDictionary[1].Quiz.QuizBuild[0].Correct_Ans.ToString());
         }
     }
