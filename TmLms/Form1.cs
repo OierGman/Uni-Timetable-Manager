@@ -36,8 +36,13 @@ namespace TmLms
             {
                 "not the answer", "anothernot the answer", "still not the answer"
             };
-            Quiz.questions.Add(new Quiz(TMEngine.Instance.ModuleDictionary[0].Code, 
-                "multiple choice", "is this a question?", "the answer", wrong_ans));
+            var correct_ans = new List<string>()
+            {
+                "the answer"
+            };
+            Quiz.questions.Add(new Quiz("test", "multiple choice", "is this a question?", correct_ans, wrong_ans));
+            // Quiz.questions.Add(new Quiz(TMEngine.Instance.ModuleDictionary[0].Code, 
+            //    "multiple choice", "is this a question?", correct_ans, wrong_ans));
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -111,13 +111,13 @@ namespace TmLms
                         {
                             if (isCore)
                             {
-                                TMEngine.Instance.CourseDictionary[courseIndex].CoreCourseList.
+                                TMEngine.Instance.CourseDictionary[courseIndex+1].CoreCourseList.
                                     Add(TMEngine.Instance.ModuleDictionary[i + 1]);
                                 MessageBox.Show("Added as core modules");
                             }
                             else
                             {
-                                TMEngine.Instance.CourseDictionary[courseIndex].OptionalCourseList.
+                                TMEngine.Instance.CourseDictionary[courseIndex+1].OptionalCourseList.
                                     Add(TMEngine.Instance.ModuleDictionary[i + 1]);
                                 MessageBox.Show("Added as optional modules");
                             }

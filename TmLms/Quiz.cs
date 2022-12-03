@@ -13,7 +13,7 @@ namespace TmLms
         public string ModuleCode { get; set; }
         public string Type { get; set; }
         public string Question { get; set; }
-        public string Correct_Ans { get; set; }
+        public List<string> Correct_Ans { get; set; }
         public List<string> Incorrect_Ans { get; set; }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace TmLms
         /// answers as collection
         /// <param name="incorrect_Ans"></param>
         /// incorrect answers as collection
-        public Quiz(string moduleCode, string type, string question, string correct_Ans, List<string> incorrect_Ans)
+        public Quiz(string moduleCode, string type, string question, List<string> correct_Ans, List<string> incorrect_Ans)
         {
             ModuleCode = moduleCode;
             Type = type;
