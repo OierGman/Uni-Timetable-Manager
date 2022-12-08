@@ -32,5 +32,10 @@ namespace TmLms
                 return instance;
             }
         }
+
+        // API for test builder, instructor can pick categories, difficulty and number of questions
+        // question type is limited to bool and multiple choice
+        // API key required
+        // https://opentdb.com/api_config.php
     }
 }

@@ -38,6 +38,10 @@ namespace TmLms
             Incorrect_Ans = incorrect_Ans;
             Marks = marks;
         }
+        public string getType()
+        {
+            return this.Type;
+        }
     }
 
     public class Quiz
