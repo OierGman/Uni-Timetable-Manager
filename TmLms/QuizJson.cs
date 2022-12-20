@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace TmLms
 {
-    internal class QuizJson
+    public  class QuizJson
     {
         // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
+
+        public static List<QuizJson.Result> roots = new List<QuizJson.Result>();
+
         public class Result
         {
             [JsonPropertyName("category")]

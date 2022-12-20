@@ -13,7 +13,6 @@ namespace TmLms
 
         public Dictionary<int, TM.Module> ModuleDictionary { get; set; }
 
-
         private static readonly TMEngine instance = new TMEngine();
 
         static TMEngine()
@@ -39,7 +38,7 @@ namespace TmLms
         // API key required
         // https://opentdb.com/api_config.php
 
-        public async Task GetQuiz(string seed)
+        public static async Task GetQuiz(string seed)
         {
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             try
@@ -56,7 +55,7 @@ namespace TmLms
                 {
                     foreach (var x in myDeserializedClass.results)
                     {
-                        // roots.Add(x);
+                        QuizJson.roots.Add(x);
                         Console.WriteLine(x.question);
                         Console.WriteLine(x.type.GetType());
                         Console.WriteLine(x.correct_answer);
