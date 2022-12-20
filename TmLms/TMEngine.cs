@@ -39,7 +39,7 @@ namespace TmLms
         // API key required
         // https://opentdb.com/api_config.php
 
-        public static async Task Main(string seed)
+        public async Task GetQuiz(string seed)
         {
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             try
