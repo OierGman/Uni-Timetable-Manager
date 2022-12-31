@@ -12,9 +12,9 @@ namespace TmLms
 {
     public partial class courseForm : Form
     {
-        bool isCore = false;
         int courseIndex = 0;
         bool editorMode = false;
+        bool isCore = true;
 
         public courseForm()
         {
@@ -91,7 +91,7 @@ namespace TmLms
 
         private void buttonAddOpt_Click(object sender, EventArgs e)
         {
-            isCore = false;
+            isCore |= false;
             checkedListBoxModules.Items.Clear();
 
             foreach (var i in TMEngine.Instance.ModuleDictionary)
@@ -128,11 +128,17 @@ namespace TmLms
                                 {
                                     MessageBox.Show("This module already exists in this course");
                                 }
-                                else
+                                else if (isCore)
                                 {
                                     TMEngine.Instance.CourseDictionary[courseIndex + 1].CoreCourseList.
                                             Add(TMEngine.Instance.ModuleDictionary[i + 1]);
-                                    MessageBox.Show("Added module " + TMEngine.Instance.ModuleDictionary[i + 1].Name);
+                                    MessageBox.Show("Added core module " + TMEngine.Instance.ModuleDictionary[i + 1].Name);
+                                }
+                                else
+                                {
+                                    TMEngine.Instance.CourseDictionary[courseIndex + 1].OptionalCourseList.
+                                            Add(TMEngine.Instance.ModuleDictionary[i + 1]);
+                                    MessageBox.Show("Added optional module " + TMEngine.Instance.ModuleDictionary[i + 1].Name);
                                 }
                             }
                         }

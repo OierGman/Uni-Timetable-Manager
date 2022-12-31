@@ -30,7 +30,7 @@
         {
             this.comboBoxCourses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxOptMod = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timetablePanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -42,6 +42,7 @@
             this.comboBoxCourses.Name = "comboBoxCourses";
             this.comboBoxCourses.Size = new System.Drawing.Size(121, 23);
             this.comboBoxCourses.TabIndex = 0;
+            this.comboBoxCourses.SelectedIndexChanged += new System.EventHandler(this.comboBoxCourses_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -52,13 +53,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Select Course:";
             // 
-            // checkedListBox1
+            // checkedListBoxOptMod
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(164, 24);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(291, 94);
-            this.checkedListBox1.TabIndex = 3;
+            this.checkedListBoxOptMod.FormattingEnabled = true;
+            this.checkedListBoxOptMod.Location = new System.Drawing.Point(164, 24);
+            this.checkedListBoxOptMod.Name = "checkedListBoxOptMod";
+            this.checkedListBoxOptMod.Size = new System.Drawing.Size(291, 94);
+            this.checkedListBoxOptMod.TabIndex = 3;
             // 
             // label2
             // 
@@ -83,7 +84,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.timetablePanel);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkedListBoxOptMod);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxCourses);
             this.Name = "Timetable";
@@ -98,7 +99,7 @@
 
         private ComboBox comboBoxCourses;
         private Label label1;
-        private CheckedListBox checkedListBox1;
+        private CheckedListBox checkedListBoxOptMod;
         private Label label2;
         private Panel timetablePanel;
     }
