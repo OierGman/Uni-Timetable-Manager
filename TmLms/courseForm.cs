@@ -91,7 +91,7 @@ namespace TmLms
 
         private void buttonAddOpt_Click(object sender, EventArgs e)
         {
-            isCore |= false;
+            isCore = false;
             checkedListBoxModules.Items.Clear();
 
             foreach (var i in TMEngine.Instance.ModuleDictionary)
@@ -128,7 +128,7 @@ namespace TmLms
                                 {
                                     MessageBox.Show("This module already exists in this course");
                                 }
-                                else if (isCore)
+                                else if (isCore == true)
                                 {
                                     TMEngine.Instance.CourseDictionary[courseIndex + 1].CoreCourseList.
                                             Add(TMEngine.Instance.ModuleDictionary[i + 1]);

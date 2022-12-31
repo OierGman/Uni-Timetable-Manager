@@ -12,6 +12,8 @@ namespace TmLms
 {
     public partial class Timetable : Form
     {
+        TableLayoutPanel timetable = new TableLayoutPanel();
+
         public Timetable()
         {
             InitializeComponent();
@@ -24,8 +26,21 @@ namespace TmLms
                 comboBoxCourses.Items.Add(TMEngine.Instance.CourseDictionary[i + 1].Name);
             }
 
-            #region TimeTable
-            TableLayoutPanel timetable = new TableLayoutPanel();
+            timetableAlloc();
+        }
+
+        private void comboBoxCourses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var i in TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList)
+            {
+                checkedListBoxOptMod.Items.Add(i.Name);
+            }
+
+            FillTimetable(comboBoxCourses.SelectedIndex + 1);
+        }
+
+        public void timetableAlloc()
+        {
             timetable.ColumnCount = 6;
             timetable.RowCount = 4;
             timetable.Dock = DockStyle.Fill;
@@ -60,18 +75,50 @@ namespace TmLms
             timetable.Controls.Add(
                 new Label() { Text = "PM", TextAlign = ContentAlignment.MiddleCenter, Dock = DockStyle.Fill }, 0, 3);
 
-            
-
             timetablePanel.Controls.Add(timetable);
-            #endregion
         }
-
-        private void comboBoxCourses_SelectedIndexChanged(object sender, EventArgs e)
+        public void FillTimetable(int courseIndex)
         {
-            foreach (var i in TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList)
+            timetablePanel.Controls.Clear();
+            timetable.Controls.Clear();
+            timetableAlloc();
+
+            Random rnd = new Random();
+
+            Button module1 = new Button
             {
-                checkedListBoxOptMod.Items.Add(i.Name);
-            }
+                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[0].Name,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                FlatAppearance =
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            Button module2 = new Button
+            {
+                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[1].Name,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                FlatAppearance =
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            Button module3 = new Button
+            {
+                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[2].Name,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Fill,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.White,
+                FlatAppearance =
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+            };
+            
+            timetable.Controls.Add(module1, rnd.Next(2, 5), 1);
+            timetable.Controls.Add(module2, 1, 1);
+            timetable.Controls.Add(module3, rnd.Next(1, 5), 3);
         }
     }
 }
