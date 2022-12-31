@@ -19,6 +19,46 @@ namespace TmLms
 
             TMEngine.Instance.ModuleDictionary.Add(1, testModule);
 
+            TM.Module testModule1 = new TM.Module("OOP1", "");
+            testModule1.Name = "OOP";
+            testModule1.Description = "";
+            testModule1.Credits = (TM.Module.CreditEnum)20;
+            testModule1.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(2, testModule1);
+
+            TM.Module testModule2 = new TM.Module("FC1", "");
+            testModule2.Name = "Fundamentals Computers";
+            testModule2.Description = "";
+            testModule2.Credits = (TM.Module.CreditEnum)20;
+            testModule2.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(3, testModule2);
+
+            TM.Module testModule3 = new TM.Module("F1", "");
+            testModule3.Name = "Frameworks";
+            testModule3.Description = "";
+            testModule3.Credits = (TM.Module.CreditEnum)20;
+            testModule3.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(4, testModule3);
+
+            TM.Module testModule4 = new TM.Module("AD1", "");
+            testModule4.Name = "App Dev";
+            testModule4.Description = "";
+            testModule4.Credits = (TM.Module.CreditEnum)20;
+            testModule4.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(5, testModule4);
+
+            TM.Module testModule5 = new TM.Module("CC1", "");
+            testModule5.Name = "Could Concepts";
+            testModule5.Description = "";
+            testModule5.Credits = (TM.Module.CreditEnum)20;
+            testModule5.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(6, testModule5);
+
             // admin test
             Users.Administrator.administrators.Add(new Users.Administrator("Admin1", "001"));
             Users.Administrator.administrators.Add(new Users.Administrator("Admin2", "002"));

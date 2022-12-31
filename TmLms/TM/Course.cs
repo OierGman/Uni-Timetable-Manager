@@ -116,5 +116,21 @@ namespace TmLms.TM
         {
             this.OptionalCourseList.Clear();
         }
+
+        public List<Module> GetAllModules()
+        {
+            List<Module> modules = new List<Module>();
+            foreach (var Cmodule in CoreCourseList)
+            {
+                modules.Add(Cmodule);
+            }
+            foreach (var Omodule in OptionalCourseList)
+            {
+                Omodule.Name = Name + "Optional";
+                modules.Add(Omodule);
+            }
+
+            return modules;
+        }
     }
 }
