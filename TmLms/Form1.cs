@@ -26,6 +26,7 @@ namespace TmLms
             Users.Administrator.administrators.Add(new Users.Administrator("Admin4", "004"));
             Users.Administrator.administrators.Add(new Users.Administrator("Admin5", "005"));
 
+            //instructor test
             Users.Instructor.instructors.Add(new Users.Instructor("Tim", "001"));
             Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
             Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
@@ -169,6 +170,7 @@ namespace TmLms
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // show timetable
             Timetable x = new Timetable();
             x.Show();
         }

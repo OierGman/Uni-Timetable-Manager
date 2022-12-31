@@ -99,8 +99,42 @@ namespace TmLms
             }
         }
 
+        // this logic does not work
+
+        // logic now works
         private void buttonPeform_Click(object sender, EventArgs e)
         {
+            if (totalCredits(courseIndex) == 120)
+            {
+                MessageBox.Show("Cannot add anymore core or optional modules");
+                TMEngine.Instance.CourseDictionary[courseIndex + 1].RevoveAllOptionalModules();
+            }
+            else if (totalCredits(courseIndex) < 120)
+            {
+                for (int i = 0; i < checkedListBoxModules.Items.Count; i++)
+                {
+                    if (checkedListBoxModules.GetItemCheckState(i) == CheckState.Checked)
+                    {
+                        if (totalCredits(courseIndex) + (int)TMEngine.Instance.ModuleDictionary[i + 1].Credits <= 120)
+                        {
+
+                            if (TMEngine.Instance.CourseDictionary[courseIndex + 1].CoreCourseList.
+                                Contains(TMEngine.Instance.ModuleDictionary[i + 1]) || TMEngine.Instance.CourseDictionary[courseIndex + 1].
+                                OptionalCourseList.Contains(TMEngine.Instance.ModuleDictionary[i + 1]))
+                            {
+                                MessageBox.Show("This module already exists in this course");
+                            }
+                            else
+                            {
+                                TMEngine.Instance.CourseDictionary[courseIndex + 1].CoreCourseList.
+                                        Add(TMEngine.Instance.ModuleDictionary[i + 1]);
+                                MessageBox.Show("Added module " + TMEngine.Instance.ModuleDictionary[i + 1].Name);
+                            }
+                        }
+                    }
+                }
+            }
+            /*
             if (checkedListBoxModules.CheckedItems.Count > 0)
             {
                 for (int i = 0; i < checkedListBoxModules.Items.Count; i++)
@@ -125,6 +159,12 @@ namespace TmLms
                     }
                 }
             }
+            */
+        }
+
+        public static int totalCredits(int courseIndex)
+        {
+            return TMEngine.Instance.CourseDictionary[courseIndex + 1].GetCreds();
         }
 
         public static bool CheckAdd(int i, bool isCore)

@@ -16,5 +16,15 @@ namespace TmLms
         {
             InitializeComponent();
         }
+
+        private void Timetable_Load(object sender, EventArgs e)
+        {
+            // comboBoxCourses.SelectedIndex = 0;
+            
+            for (int i = 0; i < TMEngine.Instance.CourseDictionary.Count; i++)
+            {
+                comboBoxCourses.Items.Add(TMEngine.Instance.CourseDictionary[i + 1].Name);
+            }
+        }
     }
 }

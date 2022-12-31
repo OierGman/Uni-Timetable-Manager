@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCourses = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timetablePanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxCourses
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxCourses.FormattingEnabled = true;
+            this.comboBoxCourses.Location = new System.Drawing.Point(12, 24);
+            this.comboBoxCourses.Name = "comboBoxCourses";
+            this.comboBoxCourses.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxCourses.TabIndex = 0;
             // 
             // label1
             // 
@@ -85,9 +85,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxCourses);
             this.Name = "Timetable";
             this.Text = "Timetable";
+            this.Load += new System.EventHandler(this.Timetable_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,7 +96,7 @@
 
         #endregion
 
-        private ComboBox comboBox1;
+        private ComboBox comboBoxCourses;
         private Label label1;
         private CheckedListBox checkedListBox1;
         private Label label2;

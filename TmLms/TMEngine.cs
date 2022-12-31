@@ -47,7 +47,6 @@ namespace TmLms
                 HttpResponseMessage response = await client.GetAsync("https://opentdb.com/api.php?" + seed);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-                // Above three lines can be replaced with new helper method below
                 // string responseBody = await client.GetStringAsync(uri);
                 QuizJson.Root myDeserializedClass = JsonSerializer.Deserialize<QuizJson.Root>(responseBody);
 
