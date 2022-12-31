@@ -164,8 +164,13 @@ namespace TmLms
         }
 
 
+
         #endregion
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Timetable x = new Timetable();
+            x.Show();
+        }
     }
 }
