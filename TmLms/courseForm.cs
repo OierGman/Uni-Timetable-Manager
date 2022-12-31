@@ -211,6 +211,8 @@ namespace TmLms
             editorMode = true;
             checkedListBoxModules.Items.Clear();
             buttonCreateModule.Enabled = false;
+            buttonAddCore.Enabled = false;
+            buttonAddOpt.Enabled = false;
             label4.Text = "Module: " + TMEngine.Instance.CourseDictionary[courseIndex + 1].Name;
 
             foreach (var i in TMEngine.Instance.CourseDictionary[courseIndex + 1].GetAllModules())
@@ -225,6 +227,8 @@ namespace TmLms
             editorMode = false;
             checkedListBoxModules.Items.Clear();
             buttonCreateModule.Enabled = true;
+            buttonAddCore.Enabled = true;
+            buttonAddOpt.Enabled = true;
             label4.Text = "Modules";
         }
     }
