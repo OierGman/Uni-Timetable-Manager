@@ -87,7 +87,7 @@ namespace TmLms
 
             Button module1 = new Button
             {
-                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[0].Name,
+                Text = getName(0, courseIndex),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
@@ -97,7 +97,7 @@ namespace TmLms
             };
             Button module2 = new Button
             {
-                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[1].Name,
+                Text = getName(1, courseIndex),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
@@ -107,7 +107,7 @@ namespace TmLms
             };
             Button module3 = new Button
             {
-                Text = TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[2].Name,
+                Text = getName(2, courseIndex),
                 TextAlign = ContentAlignment.MiddleCenter,
                 Dock = DockStyle.Fill,
                 FlatStyle = FlatStyle.Flat,
@@ -119,6 +119,19 @@ namespace TmLms
             timetable.Controls.Add(module1, rnd.Next(2, 5), 1);
             timetable.Controls.Add(module2, 1, 1);
             timetable.Controls.Add(module3, rnd.Next(1, 5), 3);
+        }
+
+        public string getName(int index, int courseIndex)
+        {
+            if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
+            {
+                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
+                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz.Name;
+            }
+            else
+            {
+                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
+            }
         }
     }
 }

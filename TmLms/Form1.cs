@@ -9,6 +9,19 @@ namespace TmLms
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            // admin test
+            Users.Administrator.administrators.Add(new Users.Administrator("Admin1", "001"));
+            Users.Administrator.administrators.Add(new Users.Administrator("Admin2", "002"));
+            Users.Administrator.administrators.Add(new Users.Administrator("Admin3", "003"));
+            Users.Administrator.administrators.Add(new Users.Administrator("Admin4", "004"));
+            Users.Administrator.administrators.Add(new Users.Administrator("Admin5", "005"));
+
+            //instructor test
+            Users.Instructor.instructors.Add(new Users.Instructor("Tim", "001"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Bill", "004"));
+
             // module test
             updateButton();
             TM.Module testModule = new TM.Module("SE1", "");
@@ -59,18 +72,16 @@ namespace TmLms
 
             TMEngine.Instance.ModuleDictionary.Add(6, testModule5);
 
-            // admin test
-            Users.Administrator.administrators.Add(new Users.Administrator("Admin1", "001"));
-            Users.Administrator.administrators.Add(new Users.Administrator("Admin2", "002"));
-            Users.Administrator.administrators.Add(new Users.Administrator("Admin3", "003"));
-            Users.Administrator.administrators.Add(new Users.Administrator("Admin4", "004"));
-            Users.Administrator.administrators.Add(new Users.Administrator("Admin5", "005"));
+            // default course
+            TM.CourseInfo TestCourse = new TM.CourseInfo("TC100", "This Course", Users.Instructor.instructors[0]);
+            TestCourse.CoreCourseList.Add(testModule);
+            TestCourse.CoreCourseList.Add(testModule1);
+            TestCourse.CoreCourseList.Add(testModule2);
+            TestCourse.CoreCourseList.Add(testModule3);
+            TestCourse.CoreCourseList.Add(testModule4);
+            TestCourse.OptionalCourseList.Add(testModule5);
 
-            //instructor test
-            Users.Instructor.instructors.Add(new Users.Instructor("Tim", "001"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Bill", "004"));
+            TMEngine.Instance.CourseDictionary.Add(1, TestCourse);
 
             // quiz test
             var wrong_ans = new List<string>()
@@ -81,9 +92,27 @@ namespace TmLms
             {
                 "the answer"
             };
-            Questions.questions.Add(new Questions("multiple choice", "is this a question?", correct_ans, wrong_ans, 5));
-            // Quiz.questions.Add(new Quiz(TMEngine.Instance.ModuleDictionary[0].Code, 
-            //    "multiple choice", "is this a question?", correct_ans, wrong_ans));
+            var wrong_ans1 = new List<string>()
+            {
+                "x", "y", "z"
+            };
+            var correct_ans1 = new List<string>()
+            {
+                "answer"
+            };
+            Questions q1 = new Questions("multiple choice", "is this a question?", correct_ans, wrong_ans, 5);
+            Questions q2 = new Questions("multiple choice", "Math?", correct_ans1, wrong_ans1, 5);
+            Questions.questions.Add(q1);
+            Questions.questions.Add(q2);
+
+            // add quiz to module 
+            List<Questions> quest1 = new List<Questions>();
+            quest1.Add(q1);
+            quest1.Add(q2);
+
+            Quiz testQuiz = new Quiz("Test Quiz", quest1);
+
+            testModule.Quiz = testQuiz;
         }
 
         private void button1_Click(object sender, EventArgs e)
