@@ -17,10 +17,19 @@ namespace TmLms
             Users.Administrator.administrators.Add(new Users.Administrator("Admin5", "005"));
 
             //instructor test
-            Users.Instructor.instructors.Add(new Users.Instructor("Tim", "001"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Joe", "002"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Alex", "003"));
-            Users.Instructor.instructors.Add(new Users.Instructor("Bill", "004"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Tim", "006"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Joe", "007"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Alex", "008"));
+            Users.Instructor.instructors.Add(new Users.Instructor("Bill", "009"));
+
+            // student test
+            Users.Student.students.Add(new Users.Student("Jack", "010"));
+            Users.Student.students.Add(new Users.Student("Jill", "011"));
+            Users.Student.students.Add(new Users.Student("James", "012"));
+            Users.Student.students.Add(new Users.Student("Liam", "013"));
+            Users.Student.students.Add(new Users.Student("Ed", "014"));
+            Users.Student.students.Add(new Users.Student("Joe", "015"));
+
 
             // module test
             updateButton();
@@ -108,9 +117,9 @@ namespace TmLms
             {
                 "si"
             };
-            Questions q1 = new Questions("multiple choice", "is this a question?", correct_ans, wrong_ans, 5);
-            Questions q2 = new Questions("multiple choice", "Math?", correct_ans1, wrong_ans1, 5);
-            Questions q3 = new Questions("multiple choice", "yes?", correct_ans2, wrong_ans2, 5);
+            Questions q1 = new Questions("Multiple Choice", "is this a question?", correct_ans, wrong_ans, 5);
+            Questions q2 = new Questions("Multiple Choice", "Math?", correct_ans1, wrong_ans1, 5);
+            Questions q3 = new Questions("Multiple Choice", "yes?", correct_ans2, wrong_ans2, 5);
             Questions.questions.Add(q1);
             Questions.questions.Add(q2);
             Questions.questions.Add(q3);

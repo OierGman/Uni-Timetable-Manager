@@ -163,9 +163,13 @@ namespace TmLms
         private void buttonAddToModule_Click(object sender, EventArgs e)
         {
             var qlist = new List<Questions>();
-            foreach (var i in checkedListBoxQuestions.CheckedItems)
+
+            for (int i = 0; i < checkedListBoxQuestions.Items.Count; i++)
             {
-                qlist.Add(Questions.questions[checkedListBoxQuestions.SelectedIndex]);
+                if (checkedListBoxQuestions.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    qlist.Add(Questions.questions[i]);
+                }
             }
             
             Quiz newQuiz = new Quiz(textBoxQuizName.Text, qlist);

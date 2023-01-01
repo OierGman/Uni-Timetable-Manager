@@ -33,12 +33,14 @@
             this.checkedListBoxOptMod = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timetablePanel = new System.Windows.Forms.Panel();
+            this.Student = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxCourses
             // 
             this.comboBoxCourses.FormattingEnabled = true;
-            this.comboBoxCourses.Location = new System.Drawing.Point(12, 24);
+            this.comboBoxCourses.Location = new System.Drawing.Point(12, 76);
             this.comboBoxCourses.Name = "comboBoxCourses";
             this.comboBoxCourses.Size = new System.Drawing.Size(121, 23);
             this.comboBoxCourses.TabIndex = 0;
@@ -47,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 6);
+            this.label1.Location = new System.Drawing.Point(12, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 15);
             this.label1.TabIndex = 2;
@@ -77,11 +79,31 @@
             this.timetablePanel.Size = new System.Drawing.Size(776, 314);
             this.timetablePanel.TabIndex = 5;
             // 
+            // Student
+            // 
+            this.Student.AutoSize = true;
+            this.Student.Location = new System.Drawing.Point(12, 6);
+            this.Student.Name = "Student";
+            this.Student.Size = new System.Drawing.Size(86, 15);
+            this.Student.TabIndex = 7;
+            this.Student.Text = "Student Name:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Timetable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Student);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.timetablePanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkedListBoxOptMod);
@@ -102,5 +124,7 @@
         private CheckedListBox checkedListBoxOptMod;
         private Label label2;
         private Panel timetablePanel;
+        private Label Student;
+        private ComboBox comboBox1;
     }
 }

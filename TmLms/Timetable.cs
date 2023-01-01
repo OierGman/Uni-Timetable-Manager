@@ -15,6 +15,7 @@ namespace TmLms
         TableLayoutPanel timetable = new TableLayoutPanel();
         public static string moduleCode;
         public static string courseCode;
+        public static Users.Student currentUser;
 
         public Timetable()
         {
@@ -28,7 +29,16 @@ namespace TmLms
                 comboBoxCourses.Items.Add(TMEngine.Instance.CourseDictionary[i + 1].Name);
             }
 
+            for (int i = 0; i < Users.Student.students.Count; i++)
+            {
+                comboBox1.Items.Add(Users.Student.students[i].name);
+            }
+
             timetableAlloc();
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentUser = Users.Student.students[comboBox1.SelectedIndex];
         }
 
         private void comboBoxCourses_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,17 +155,45 @@ namespace TmLms
 
         public string getName(int index, int courseIndex)
         {
-            if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
+            if (currentUser.results.Count < 1)
             {
-                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" + 
-                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
-                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz.Name;
+                if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
+                {
+                    return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
+                        TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
+                        TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz.Name;
+                }
+                else
+                {
+                    return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
+                        TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
+                }
             }
             else
             {
-                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" + 
-                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
+                foreach (var i in currentUser.results)
+                {
+                    if (i.Key == TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code &&
+                        TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
+                    {
+                        return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
+                            TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Result: " +
+                            i.Value;
+                    }
+                    else if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
+                    {
+                        return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
+                            TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
+                            TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz.Name;
+                    }
+                    else
+                    {
+                        return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
+                            TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
+                    }
+                }
             }
-        }
+            return null;
+        } 
     }
 }

@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace TmLms.Users
 {
-    internal class Student : Person
+    public class Student : Person
     {
+        /// <summary>
+        /// key = module code, value = result in %
+        /// </summary>
+        public Dictionary<string, string> results = new Dictionary<string, string>();
+
+        public static List<Student> students = new List<Student>();
+
         public Student(string name, string userID) : base(name, userID)
         {
 

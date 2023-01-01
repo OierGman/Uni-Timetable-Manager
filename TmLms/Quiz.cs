@@ -56,6 +56,18 @@ namespace TmLms
             Name = name;
             QuizBuild = quizBuild;
         }
+
+        public int MaximumMarks()
+        {
+            int maxMarks = 0;
+
+            foreach (Questions questions in QuizBuild)
+            {
+                maxMarks += questions.Marks;
+            }
+
+            return maxMarks;
+        }
     }
 
 }
