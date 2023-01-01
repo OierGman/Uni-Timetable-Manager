@@ -28,7 +28,7 @@ namespace TmLms
             InitializeComponent();
             AllocConsole();
         }
-
+        // i dont really like comments
         private void QuizGame_Load(object sender, EventArgs e)
         {
             label1.Text = Timetable.moduleCode + " -- " + Timetable.courseCode;
@@ -52,6 +52,7 @@ namespace TmLms
             AddQuestions();
         }
 
+        // they get boring after a while
         public void AddQuestions()
         {
             quizLayout.Dock = DockStyle.Fill;
@@ -67,6 +68,7 @@ namespace TmLms
             SubmitUtillity();
         }
 
+        // will defo make sure i do comments in industry
         public void SubmitUtillity()
         {
             submit = new TableLayoutPanel
