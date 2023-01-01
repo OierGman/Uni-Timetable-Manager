@@ -43,6 +43,8 @@ namespace TmLms
 
         private void comboBoxCourses_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //comboBoxCourses.Items.Clear();
+
             foreach (var i in TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList)
             {
                 checkedListBoxOptMod.Items.Add(i.Name);
@@ -176,9 +178,10 @@ namespace TmLms
                     if (i.Key == TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code &&
                         TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
                     {
+                        Console.WriteLine(currentUser.GetClassification(i.Value));
                         return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" +
                             TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Result: " +
-                            i.Value;
+                            currentUser.GetClassification(i.Value);
                     }
                     else if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
                     {

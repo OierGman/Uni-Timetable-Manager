@@ -11,13 +11,30 @@ namespace TmLms.Users
         /// <summary>
         /// key = module code, value = result in %
         /// </summary>
-        public Dictionary<string, string> results = new Dictionary<string, string>();
+        public Dictionary<string, TM.Marks> results = new Dictionary<string, TM.Marks>();
 
         public static List<Student> students = new List<Student>();
 
         public Student(string name, string userID) : base(name, userID)
         {
 
+        }
+
+        public string GetClassification(TM.Marks results)
+        {
+            switch ((results.AchievedMark / results.MaxMarks) * 100)
+            {
+                case >= 70:
+                    return "1st";
+                case >= 60:
+                    return "2:1";
+                case >= 50:
+                    return "2:2";
+                case >= 40:
+                    return "3rd";
+                default:
+                    return null;
+            }
         }
     }
 }

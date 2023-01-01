@@ -126,7 +126,6 @@ namespace TmLms.TM
             }
             foreach (var Omodule in OptionalCourseList)
             {
-                Omodule.Name += " --- Optional ";
                 modules.Add(Omodule);
             }
 

@@ -173,15 +173,46 @@ namespace TmLms
                     {
                         foreach (var answer in questions.Controls.OfType<Button>())
                         {
-                            if (answer.BackColor == Color.LightBlue && answer.Text.ToLower() == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower())
+                            // switch to check for right answer logic for additional question types
+                            switch (activeQuiz.QuizBuild[Int32.Parse(row.Name)].Type)
                             {
-                                result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                case "Multiple Choice":
+                                    goto case "Boolean";
+                                case "Boolean":
+                                    if (answer.BackColor == Color.LightBlue && answer.Text.ToLower() == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower())
+                                    {
+                                        result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                    }
+                                    break;
+                                case "Multiple Answer":
+                                    break;
+                                default:
+                                    break;
                             }
-                            
+                        }
+                    }
+                    foreach (var answer in row.Controls.OfType<TextBox>())
+                    {
+                        // switch to check for right answer logic for additional question types
+                        switch (activeQuiz.QuizBuild[Int32.Parse(row.Name)].Type)
+                        {
+                            case "Short Answer":
+                                if (answer.Text.Contains(activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower()))
+                                {
+                                    result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                }
+                                break;
+                            case "Essay":
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-                Timetable.currentUser.results.Add(Timetable.moduleCode, ((result / activeQuiz.MaximumMarks()) * 100).ToString());
+                TM.Marks newRecord = new TM.Marks(activeQuiz.MaximumMarks());
+                newRecord.AchievedMark = result;
+
+                Timetable.currentUser.results.Add(Timetable.moduleCode, newRecord);
                 this.Close();
             }
         }
