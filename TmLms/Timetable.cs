@@ -13,6 +13,8 @@ namespace TmLms
     public partial class Timetable : Form
     {
         TableLayoutPanel timetable = new TableLayoutPanel();
+        public static string moduleCode;
+        public static string courseCode;
 
         public Timetable()
         {
@@ -35,6 +37,8 @@ namespace TmLms
             {
                 checkedListBoxOptMod.Items.Add(i.Name);
             }
+
+            courseCode = TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].Code;
 
             FillTimetable(comboBoxCourses.SelectedIndex + 1);
         }
@@ -93,7 +97,7 @@ namespace TmLms
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.White,
                 FlatAppearance =
-                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                        { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green },
             };
             Button module2 = new Button
             {
@@ -119,18 +123,38 @@ namespace TmLms
             timetable.Controls.Add(module1, rnd.Next(2, 5), 1);
             timetable.Controls.Add(module2, 1, 1);
             timetable.Controls.Add(module3, rnd.Next(1, 5), 3);
+
+            module1.Click += module_Click;
+            module2.Click += module_Click;
+            module3.Click += module_Click;
+        }
+
+        private void module_Click(object? sender, EventArgs e)
+        {
+            string s = (sender as Button).Text;
+
+            if (s.Contains("Quiz"))
+            {
+                string[] x = s.Split("\n");
+                moduleCode = x[0];
+
+                QuizGame game = new QuizGame();
+                game.Show();
+            }
         }
 
         public string getName(int index, int courseIndex)
         {
             if (TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz != null)
             {
-                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
+                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" + 
+                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name + "\n\n" + "Quiz: " +
                     TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Quiz.Name;
             }
             else
             {
-                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
+                return TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Code + "\n" + 
+                    TMEngine.Instance.CourseDictionary[courseIndex].GetAllModules()[index].Name;
             }
         }
     }
