@@ -43,12 +43,16 @@ namespace TmLms
 
         private void buttonCorrectDel_Click(object sender, EventArgs e)
         {
-            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            try { listBox1.Items.RemoveAt(listBox1.SelectedIndex); }
+            catch { }
+            
         }
 
         private void buttonIncorrectDel_Click(object sender, EventArgs e)
         {
-            listBox2.Items.RemoveAt(listBox2.SelectedIndex);
+            try { listBox2.Items.RemoveAt(listBox2.SelectedIndex); }
+            catch { }
+            
         }
 
         private void buttonAddQuestion_Click(object sender, EventArgs e)
@@ -109,27 +113,27 @@ namespace TmLms
                     label2.Text = "Correct Answer (Add minimum 2)";
                     break;
                 case 2:
-                    textBoxCorrect.Visible = false;
+                    textBoxCorrect.Visible = true;
                     textBoxIncorrect.Visible = false;
-                    buttonAddCorrect.Visible = false;
+                    buttonAddCorrect.Visible = true;
                     buttonAddIncorrect.Visible = false;
-                    buttonCorrectDel.Visible = false;
+                    buttonCorrectDel.Visible = true;
                     buttonIncorrectDel.Visible = false;
-                    listBox1.Visible = false;
+                    listBox1.Visible = true;
                     listBox2.Visible = false;
-                    label2.Visible = false;
+                    label2.Visible = true;
                     label3.Visible = false;
                     break;
                 case 3:
-                    textBoxCorrect.Visible = false;
+                    textBoxCorrect.Visible = true;
                     textBoxIncorrect.Visible = false;
-                    buttonAddCorrect.Visible = false;
+                    buttonAddCorrect.Visible = true;
                     buttonAddIncorrect.Visible = false;
-                    buttonCorrectDel.Visible = false;
+                    buttonCorrectDel.Visible = true;
                     buttonIncorrectDel.Visible = false;
-                    listBox1.Visible = false;
+                    listBox1.Visible = true;
                     listBox2.Visible = false;
-                    label2.Visible = false;
+                    label2.Visible = true;
                     label3.Visible = false;
                     break;
                 case 4:

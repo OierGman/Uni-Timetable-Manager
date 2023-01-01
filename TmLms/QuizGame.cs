@@ -22,7 +22,6 @@ namespace TmLms
         PictureBox seperator = new PictureBox();
 
         int result;
-        string answers;
 
         public QuizGame()
         {
@@ -124,17 +123,44 @@ namespace TmLms
                     {
                         foreach (var answer in questions.Controls.OfType<Button>())
                         {
-                            if (answer.BackColor == Color.LightBlue && answer.Text == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0])
+                            // switch to check for right answer logic for additional question types
+                            switch (activeQuiz.QuizBuild[Int32.Parse(row.Name)].Type)
                             {
-                                result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                case "Multiple Choice":
+                                    goto case "Boolean";
+                                case "Boolean":
+                                    if (answer.BackColor == Color.LightBlue && answer.Text.ToLower() == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower())
+                                    {
+                                        result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                    }
+                                    break;
+                                case "Multiple Answer":
+                                    break;
+                                default:
+                                    break;
                             }
-                            answers += "Q" + row.Name + ": " + activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0] + "\n";
+                        }
+                    }
+                    foreach (var answer in row.Controls.OfType<TextBox>())
+                    {
+                        // switch to check for right answer logic for additional question types
+                        switch (activeQuiz.QuizBuild[Int32.Parse(row.Name)].Type)
+                        {
+                            case "Short Answer":
+                                if (answer.Text.Contains(activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower()))
+                                {
+                                    result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
+                                }
+                                break;
+                            case "Essay":
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-                MessageBox.Show(result.ToString() + "/" + activeQuiz.MaximumMarks() + "\n\n" + answers);
+                MessageBox.Show(result.ToString() + "/" + activeQuiz.MaximumMarks());
                 result = 0;
-                answers = "";
             }
             else
             {
@@ -145,11 +171,11 @@ namespace TmLms
                     {
                         foreach (var answer in questions.Controls.OfType<Button>())
                         {
-                            if (answer.BackColor == Color.LightBlue && answer.Text == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0])
+                            if (answer.BackColor == Color.LightBlue && answer.Text.ToLower() == activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0].ToLower())
                             {
                                 result += activeQuiz.QuizBuild[Int32.Parse(row.Name)].Marks;
                             }
-                            answers += "Q" + row.Name + ": " + activeQuiz.QuizBuild[Int32.Parse(row.Name)].Correct_Ans[0] + "\n";
+                            
                         }
                     }
                 }
@@ -212,67 +238,118 @@ namespace TmLms
  
             quizLayout.Controls.Add(questionLayout);
             questionLayout.Controls.Add(question, 0, 0);
-            questionLayout.Controls.Add(x, 0, 1);
             questionLayout.Controls.Add(result, 0, 2);
             questionLayout.Controls.Add(seperator, 0, 3);
 
             var rand1 = new Random();
-            if (activeQuiz.QuizBuild[counter].Type == "Multiple Choice")
+
+            result.Text = "/" + activeQuiz.QuizBuild[counter].Marks.ToString();
+
+            switch (activeQuiz.QuizBuild[counter].Type)
             {
-                result.Text = "/" + activeQuiz.QuizBuild[counter].Marks.ToString();
-                // multiple choice questions
-                x.Controls.Add(new Button
-                {
-                    Name = counter.ToString(),
-                    Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Correct_Ans[0]),
-                    Font = new Font("Arial", 15),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.Coral,
-                    FlatAppearance =
+                case "Multiple Choice":
+                    // multiple choice questions
+                    questionLayout.Controls.Add(x, 0, 1);
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Correct_Ans[0]),
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Coral,
+                        FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                }, rand1.Next(0, 2), rand1.Next(0, 2));
+                    }, rand1.Next(0, 2), rand1.Next(0, 2));
 
-                x.Controls.Add(new Button
-                {
-                    Name = counter.ToString(),
-                    Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[0]),
-                    Font = new Font("Arial", 15),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.WhiteSmoke,
-                    FlatAppearance =
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[0]),
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.WhiteSmoke,
+                        FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                });
+                    });
 
-                x.Controls.Add(new Button
-                {
-                    Name = counter.ToString(),
-                    Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[1]),
-                    Font = new Font("Arial", 15),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.WhiteSmoke,
-                    FlatAppearance =
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[1]),
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.WhiteSmoke,
+                        FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                });
+                    });
 
-                x.Controls.Add(new Button
-                {
-                    Name = counter.ToString(),
-                    Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[2]),
-                    Font = new Font("Arial", 15),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Dock = DockStyle.Fill,
-                    FlatStyle = FlatStyle.Flat,
-                    BackColor = Color.WhiteSmoke,
-                    FlatAppearance =
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = HttpUtility.HtmlDecode(activeQuiz.QuizBuild[counter].Incorrect_Ans[2]),
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.WhiteSmoke,
+                        FlatAppearance =
                     { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
-                });
+                    });
+                    break;
+                case "Boolean":
+                    questionLayout.Controls.Add(x, 0, 1);
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = "True",
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.WhiteSmoke,
+                        FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                    }, 0, 0);
+
+                    x.Controls.Add(new Button
+                    {
+                        Name = counter.ToString(),
+                        Text = "False",
+                        Font = new Font("Arial", 15),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.WhiteSmoke,
+                        FlatAppearance =
+                    { BorderSize = 0, MouseDownBackColor = Color.Transparent, MouseOverBackColor = Color.Green }
+                    }, 1, 0);
+                    break;
+                case "Short Answer":
+                    TextBox shortAns = new TextBox
+                    {
+                        Dock = DockStyle.Fill,
+                    };
+                    questionLayout.Controls.Add(shortAns);
+                    break;
+                case "Essay":
+                    TextBox essay = new TextBox
+                    {
+                        Dock = DockStyle.Fill,
+                        Multiline = true,
+                    };
+                    questionLayout.Controls.Add(essay);
+                    break;
             }
+
+
+
+            
             foreach (var button in x.Controls.OfType<Button>())
             {
                 button.Click += button_Click;
@@ -301,11 +378,11 @@ namespace TmLms
 
             if (((Button)sender).Text == activeQuiz.QuizBuild[index].Correct_Ans[0])
             {
-                label3.Text = "CORRECT";
+                // label3.Text = "CORRECT";
             }
             else
             {
-                label3.Text = "INCORRECT";
+                // label3.Text = "INCORRECT";
             }
         }
         [DllImport("kernel32.dll", SetLastError = true)]
