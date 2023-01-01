@@ -117,18 +117,40 @@ namespace TmLms
             {
                 "si"
             };
+            var wrong_ans3 = new List<string>()
+            {
+                "55"
+            };
+            var correct_ans3 = new List<string>()
+            {
+                "42"
+            };
+            var wrong_ans4 = new List<string>()
+            {
+                "false"
+            };
+            var correct_ans4 = new List<string>()
+            {
+                "true"
+            };
             Questions q1 = new Questions("Multiple Choice", "is this a question?", correct_ans, wrong_ans, 5);
             Questions q2 = new Questions("Multiple Choice", "Math?", correct_ans1, wrong_ans1, 5);
             Questions q3 = new Questions("Multiple Choice", "yes?", correct_ans2, wrong_ans2, 5);
+            Questions q4 = new Questions("Short Answer", "What is the meaning of life?", correct_ans3, wrong_ans3, 42);
+            Questions q5 = new Questions("Boolean", "The sun is hot", correct_ans4, wrong_ans4, 5);
             Questions.questions.Add(q1);
             Questions.questions.Add(q2);
             Questions.questions.Add(q3);
+            Questions.questions.Add(q4);
+            Questions.questions.Add(q5);
 
             // add quiz to module 
             List<Questions> quest1 = new List<Questions>();
             quest1.Add(q1);
             quest1.Add(q2);
             quest1.Add(q3);
+            quest1.Add(q4);
+            quest1.Add(q5);
 
             Quiz testQuiz = new Quiz("Test Quiz", quest1);
 
