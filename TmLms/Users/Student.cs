@@ -22,7 +22,8 @@ namespace TmLms.Users
 
         public string GetClassification(TM.Marks results)
         {
-            switch ((results.AchievedMark / results.MaxMarks) * 100)
+            decimal x = (Decimal)results.AchievedMark / (Decimal)results.MaxMarks;
+            switch ((int)Math.Round(x * 100,0))
             {
                 case >= 70:
                     return "1st";
@@ -33,7 +34,7 @@ namespace TmLms.Users
                 case >= 40:
                     return "3rd";
                 default:
-                    return null;
+                    return "Fail";
             }
         }
     }

@@ -81,6 +81,30 @@ namespace TmLms
 
             TMEngine.Instance.ModuleDictionary.Add(6, testModule5);
 
+            TM.Module testModule6 = new TM.Module("SP1", "");
+            testModule6.Name = "Software Project";
+            testModule6.Description = "";
+            testModule6.Credits = (TM.Module.CreditEnum)20;
+            testModule6.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(7, testModule6);
+
+            TM.Module testModule7 = new TM.Module("CS1", "");
+            testModule7.Name = "C Sharp";
+            testModule7.Description = "";
+            testModule7.Credits = (TM.Module.CreditEnum)20;
+            testModule7.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(8, testModule7);
+
+            TM.Module testModule8 = new TM.Module("AM1", "");
+            testModule8.Name = "Advanced Math";
+            testModule8.Description = "";
+            testModule8.Credits = (TM.Module.CreditEnum)20;
+            testModule8.Level = (TM.Module.LevelEnum)4;
+
+            TMEngine.Instance.ModuleDictionary.Add(9, testModule8);
+
             // default course
             TM.CourseInfo TestCourse = new TM.CourseInfo("TC100", "This Course", Users.Instructor.instructors[0]);
             TestCourse.CoreCourseList.Add(testModule);
@@ -91,6 +115,18 @@ namespace TmLms
             TestCourse.OptionalCourseList.Add(testModule5);
 
             TMEngine.Instance.CourseDictionary.Add(1, TestCourse);
+
+            TM.CourseInfo TestCourse1 = new TM.CourseInfo("TC101", "New Course", Users.Instructor.instructors[3]);
+            TestCourse1.CoreCourseList.Add(testModule1);
+            TestCourse1.CoreCourseList.Add(testModule7);
+            TestCourse1.CoreCourseList.Add(testModule8);
+            TestCourse1.CoreCourseList.Add(testModule6);
+            TestCourse1.CoreCourseList.Add(testModule5);
+            TestCourse1.OptionalCourseList.Add(testModule2);
+            TestCourse1.OptionalCourseList.Add(testModule3);
+            TestCourse1.OptionalCourseList.Add(testModule4);
+
+            TMEngine.Instance.CourseDictionary.Add(2, TestCourse1);
 
             // quiz test
             var wrong_ans = new List<string>()
