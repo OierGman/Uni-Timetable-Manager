@@ -16,6 +16,7 @@ namespace TmLms
         public static string moduleCode;
         public static string courseCode;
         public static Users.Student currentUser;
+        int optionalToCore = 0;
 
         public Timetable()
         {
@@ -38,7 +39,72 @@ namespace TmLms
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            optionalToCore = 0;
             currentUser = Users.Student.students[comboBox1.SelectedIndex];
+        }
+
+        private void buttonApprove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].GetCreds() + optionalToCore == 120)
+                {
+                    FillTimetable(comboBoxCourses.SelectedIndex + 1);
+                }
+                else
+                {
+                    int x = 120 - TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].GetCreds();
+                    int somePlaceholder = 0;
+                    for (int i = 0; i < checkedListBoxOptMod.Items.Count; i++)
+                    {
+                        if (checkedListBoxOptMod.GetItemCheckState(i) == CheckState.Checked)
+                        {
+                            if (TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].GetCreds() +
+                                (int)TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList[i].Credits
+                                <= 120)
+                            {
+                                somePlaceholder += (int)TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList[i].Credits;
+                            }
+                        }
+                    }
+                    if (somePlaceholder + TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].GetCreds() == 120)
+                    {
+                        for (int i = 0; i < checkedListBoxOptMod.Items.Count; i++)
+                        {
+                            if (checkedListBoxOptMod.GetItemCheckState(i) == CheckState.Checked)
+                            {
+                                for (int j = 0; j < TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].CoreCourseList.Count; j++)
+                                {
+                                    if (TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList[i].Code ==
+                                        TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].CoreCourseList[j].Code)
+                                    {
+                                        MessageBox.Show("Module already exists");
+                                    }
+                                    else
+                                    {
+                                        optionalToCore += (int)TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList[i].Credits;
+                                        TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList[i].Members.Add(
+                                            Users.Student.students[comboBox1.SelectedIndex].ToString());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(x.ToString() + " Credits left to add \n You have selected: " + somePlaceholder.ToString());
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("select a module");
+            }   
+            foreach ( var i in TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].CoreCourseList)
+            {
+                i.Members.Add(Users.Student.students[comboBox1.SelectedIndex].ToString());
+            }
         }
 
         private void comboBoxCourses_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,12 +113,10 @@ namespace TmLms
 
             foreach (var i in TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].OptionalCourseList)
             {
-                checkedListBoxOptMod.Items.Add(i.Name);
+                checkedListBoxOptMod.Items.Add(i.Name + " - " + i.Credits + " Credits");
             }
 
             courseCode = TMEngine.Instance.CourseDictionary[comboBoxCourses.SelectedIndex + 1].Code;
-
-            FillTimetable(comboBoxCourses.SelectedIndex + 1);
         }
 
         public void timetableAlloc()
@@ -196,6 +260,8 @@ namespace TmLms
                 }
             }
             return null;
-        } 
+        }
+
+        
     }
 }
