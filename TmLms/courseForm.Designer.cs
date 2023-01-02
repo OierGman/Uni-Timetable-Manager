@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkedListBoxCourses = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxModules = new System.Windows.Forms.CheckedListBox();
+            this.buttonExitEd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonExitEd);
             this.groupBox2.Controls.Add(this.buttonCreateModule);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.buttonPeform);
@@ -125,9 +127,9 @@
             // 
             // buttonCreateModule
             // 
-            this.buttonCreateModule.Location = new System.Drawing.Point(397, 38);
+            this.buttonCreateModule.Location = new System.Drawing.Point(549, 37);
             this.buttonCreateModule.Name = "buttonCreateModule";
-            this.buttonCreateModule.Size = new System.Drawing.Size(146, 33);
+            this.buttonCreateModule.Size = new System.Drawing.Size(221, 21);
             this.buttonCreateModule.TabIndex = 10;
             this.buttonCreateModule.Text = "Create More Modules";
             this.buttonCreateModule.UseVisualStyleBackColor = true;
@@ -154,11 +156,11 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(233, 297);
+            this.buttonDelete.Location = new System.Drawing.Point(233, 261);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(158, 33);
             this.buttonDelete.TabIndex = 7;
-            this.buttonDelete.Text = "Delete Mode";
+            this.buttonDelete.Text = "Editor Mode";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
@@ -203,10 +205,20 @@
             // checkedListBoxModules
             // 
             this.checkedListBoxModules.FormattingEnabled = true;
-            this.checkedListBoxModules.Location = new System.Drawing.Point(549, 38);
+            this.checkedListBoxModules.Location = new System.Drawing.Point(549, 64);
             this.checkedListBoxModules.Name = "checkedListBoxModules";
-            this.checkedListBoxModules.Size = new System.Drawing.Size(221, 256);
+            this.checkedListBoxModules.Size = new System.Drawing.Size(221, 220);
             this.checkedListBoxModules.TabIndex = 0;
+            // 
+            // buttonExitEd
+            // 
+            this.buttonExitEd.Location = new System.Drawing.Point(233, 297);
+            this.buttonExitEd.Name = "buttonExitEd";
+            this.buttonExitEd.Size = new System.Drawing.Size(158, 33);
+            this.buttonExitEd.TabIndex = 11;
+            this.buttonExitEd.Text = "Exit Editor Mode";
+            this.buttonExitEd.UseVisualStyleBackColor = true;
+            this.buttonExitEd.Click += new System.EventHandler(this.buttonExitEd_Click);
             // 
             // courseForm
             // 
@@ -244,5 +256,6 @@
         private Button buttonAddOpt;
         private Label label4;
         private Button buttonCreateModule;
+        private Button buttonExitEd;
     }
 }
