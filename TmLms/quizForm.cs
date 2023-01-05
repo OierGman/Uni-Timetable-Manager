@@ -182,5 +182,31 @@ namespace TmLms
             // testing
             MessageBox.Show(TMEngine.Instance.ModuleDictionary[1].Quiz.Name + "\n\r" + TMEngine.Instance.ModuleDictionary[1].Quiz.QuizBuild[0].Correct_Ans.ToString());
         }
+
+        async Task GetQuizCategories(BackgroundWorker worker, DoWorkEventArgs e)
+        {
+            await TMEngine.GetCategories();
+        }
+
+        private async void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = (BackgroundWorker)sender;
+
+            e.Result = GetQuizCategories(worker, e);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            QuizAPI x = new QuizAPI();
+            x.Show();
+        }
+
+        private void buttonImport_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy != true)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
     }
 }

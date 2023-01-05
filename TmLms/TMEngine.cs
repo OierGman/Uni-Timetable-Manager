@@ -48,24 +48,44 @@ namespace TmLms
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 // string responseBody = await client.GetStringAsync(uri);
-                QuizJson.Root myDeserializedClass = JsonSerializer.Deserialize<QuizJson.Root>(responseBody);
+                QuizJson.Root quizclass = JsonSerializer.Deserialize<QuizJson.Root>(responseBody);
 
-                if (myDeserializedClass.response_code == 0)
+                if (quizclass.response_code == 0)
                 {
-                    foreach (var x in myDeserializedClass.results)
+                    foreach (var x in quizclass.results)
                     {
                         QuizJson.roots.Add(x);
-                        Console.WriteLine(x.question);
-                        Console.WriteLine(x.type.GetType());
-                        Console.WriteLine(x.correct_answer);
-                        Console.WriteLine(x.difficulty);
-                        Console.WriteLine(x.incorrect_answers);
-                        Console.WriteLine(x.incorrect_answers[0]);
                     }
                 }
                 else
                 {
                     return;
+                }
+            }
+            catch (Exception exception)
+            {
+                if (exception is HttpRequestException)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", exception.Message);
+                }
+            }
+        }
+
+        public static async Task GetCategories()
+        {
+            // Call asynchronous network methods in a try/catch block to handle exceptions.
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("https://opentdb.com/api_category.php");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Categories.Root categoryclass = JsonSerializer.Deserialize<Categories.Root>(responseBody);
+
+                foreach (var x in categoryclass.trivia_categories)
+                {
+                    Categories.categories.Add(x);
                 }
             }
             catch (Exception exception)

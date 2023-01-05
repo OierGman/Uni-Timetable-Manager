@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonAddToModule = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.checkedListBoxQuestions = new System.Windows.Forms.CheckedListBox();
             this.textBoxQuizName = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -244,6 +246,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonImport);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.buttonAddToModule);
             this.groupBox2.Controls.Add(this.label6);
@@ -257,6 +260,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Quiz Builder";
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Location = new System.Drawing.Point(6, 149);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(175, 23);
+            this.buttonImport.TabIndex = 17;
+            this.buttonImport.Text = "Import Questions";
+            this.buttonImport.UseVisualStyleBackColor = true;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // label7
             // 
@@ -318,6 +331,11 @@
             this.textBoxQuizName.Size = new System.Drawing.Size(175, 23);
             this.textBoxQuizName.TabIndex = 15;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // quizForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -365,5 +383,7 @@
         private Button buttonAddToModule;
         private Label label8;
         private NumericUpDown numericUpDownMarks;
+        private Button buttonImport;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
