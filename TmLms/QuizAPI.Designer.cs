@@ -32,7 +32,7 @@
             this.buttonGetQuiz = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxDiff = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // checkedListBoxCategories
@@ -42,6 +42,7 @@
             this.checkedListBoxCategories.Name = "checkedListBoxCategories";
             this.checkedListBoxCategories.Size = new System.Drawing.Size(192, 364);
             this.checkedListBoxCategories.TabIndex = 0;
+            this.checkedListBoxCategories.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxCategories_ItemCheck);
             // 
             // buttonGetQuiz
             // 
@@ -52,6 +53,7 @@
             this.buttonGetQuiz.TabIndex = 1;
             this.buttonGetQuiz.Text = "Get Quiz";
             this.buttonGetQuiz.UseVisualStyleBackColor = true;
+            this.buttonGetQuiz.Click += new System.EventHandler(this.buttonGetQuiz_Click);
             // 
             // label1
             // 
@@ -71,20 +73,25 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Select Difficulty (Leave blank for random)";
             // 
-            // checkedListBox1
+            // checkedListBoxDiff
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(261, 31);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(192, 58);
-            this.checkedListBox1.TabIndex = 4;
+            this.checkedListBoxDiff.FormattingEnabled = true;
+            this.checkedListBoxDiff.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "Hard"});
+            this.checkedListBoxDiff.Location = new System.Drawing.Point(261, 31);
+            this.checkedListBoxDiff.Name = "checkedListBoxDiff";
+            this.checkedListBoxDiff.Size = new System.Drawing.Size(192, 58);
+            this.checkedListBoxDiff.TabIndex = 4;
+            this.checkedListBoxDiff.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxDiff_ItemCheck);
             // 
             // QuizAPI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkedListBoxDiff);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonGetQuiz);
@@ -102,6 +109,6 @@
         private Button buttonGetQuiz;
         private Label label1;
         private Label label2;
-        private CheckedListBox checkedListBox1;
+        private CheckedListBox checkedListBoxDiff;
     }
 }

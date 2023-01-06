@@ -106,7 +106,7 @@ namespace TmLms
             PrepareQuizAsync();
 
             quizForm x = new quizForm();
-            x.Show();
+            x.ShowDialog();
         }
     }
 }

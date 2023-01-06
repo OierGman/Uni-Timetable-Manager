@@ -57,10 +57,16 @@ namespace TmLms
 
         private void buttonAddQuestion_Click(object sender, EventArgs e)
         {
-            Questions.questions.Add(new Questions(comboBox1.Text, textBoxQuestion.Text, 
-                listBox1.Items.Cast<string>().ToList(), listBox2.Items.Cast<string>().ToList(), 
-                (int)numericUpDownMarks.Value));
+            if (textBoxQuestion.Text == "") 
+            {
 
+            }
+            else
+            {
+                Questions.questions.Add(new Questions(comboBox1.Text, textBoxQuestion.Text,
+                listBox1.Items.Cast<string>().ToList(), listBox2.Items.Cast<string>().ToList(),
+                (int)numericUpDownMarks.Value));
+            }
             checkedListBoxQuestions.Items.Clear();
             foreach (var i in Questions.questions)
             {
@@ -187,6 +193,35 @@ namespace TmLms
         {
             QuizAPI x = new QuizAPI();
             x.Show();
+        }
+
+        private void buttonLoadAPIQuiz_Click(object sender, EventArgs e)
+        {
+            List<string> placeholderList = new List<string>();
+            string type = "";
+
+            for (int i = 0; i < QuizJson.roots.Count; i++)
+            {
+                placeholderList.Clear();
+                placeholderList.Add(QuizJson.roots[i].correct_answer);
+
+                if (QuizJson.roots[i].type == "multiple")
+                {
+                    type = "Multiple Choice";
+                }
+                else
+                {
+                    type = "Boolean";
+                }
+
+                Questions.questions.Add(new Questions(type, QuizJson.roots[i].question, placeholderList, QuizJson.roots
+                    [i].incorrect_answers, 5));
+            }
+            checkedListBoxQuestions.Items.Clear();
+            foreach (var i in Questions.questions)
+            {
+                checkedListBoxQuestions.Items.Add(i.Question);
+            }
         }
     }
 }
