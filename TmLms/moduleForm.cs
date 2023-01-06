@@ -96,9 +96,15 @@ namespace TmLms
             this.Close();
         }
 
+        public async Task PrepareQuizAsync()
+        {
+            Categories.categories.Clear();
+            await TMEngine.GetCategories();
+        }
         private void buttonAddQuiz_Click(object sender, EventArgs e)
         {
-            //TMEngine.Instance.ModuleDictionary[listBoxModules.SelectedIndex+1].Quiz = 
+            PrepareQuizAsync();
+
             quizForm x = new quizForm();
             x.Show();
         }

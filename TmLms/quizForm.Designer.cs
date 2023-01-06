@@ -55,7 +55,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.checkedListBoxQuestions = new System.Windows.Forms.CheckedListBox();
             this.textBoxQuizName = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -331,11 +330,6 @@
             this.textBoxQuizName.Size = new System.Drawing.Size(175, 23);
             this.textBoxQuizName.TabIndex = 15;
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
             // quizForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -384,6 +378,5 @@
         private Label label8;
         private NumericUpDown numericUpDownMarks;
         private Button buttonImport;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

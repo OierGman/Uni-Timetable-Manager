@@ -16,7 +16,7 @@ namespace TmLms
         {
             
             InitializeComponent();
-            Thread.Sleep(3000);
+
             foreach ( var i in Categories.categories)
             {
                 checkedListBoxCategories.Items.Add(i.name);
