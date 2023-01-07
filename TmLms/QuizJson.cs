@@ -43,4 +43,24 @@ namespace TmLms
             public List<Result> results { get; set; }
         }
     }
+
+    public class Categories
+    {
+        public static List<TriviaCategory> categories = new List<TriviaCategory>();
+
+        public class Root
+        {
+            [JsonPropertyName("trivia_categories")]
+            public List<TriviaCategory> trivia_categories { get; set; }
+        }
+
+        public class TriviaCategory
+        {
+            [JsonPropertyName("id")]
+            public int id { get; set; }
+
+            [JsonPropertyName("name")]
+            public string name { get; set; }
+        }
+    }
 }

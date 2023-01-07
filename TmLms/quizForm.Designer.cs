@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonImport = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonAddToModule = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.checkedListBoxQuestions = new System.Windows.Forms.CheckedListBox();
             this.textBoxQuizName = new System.Windows.Forms.TextBox();
+            this.buttonLoadAPIQuiz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarks)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -244,6 +246,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonLoadAPIQuiz);
+            this.groupBox2.Controls.Add(this.buttonImport);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.buttonAddToModule);
             this.groupBox2.Controls.Add(this.label6);
@@ -257,6 +261,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Quiz Builder";
+            // 
+            // buttonImport
+            // 
+            this.buttonImport.Location = new System.Drawing.Point(5, 120);
+            this.buttonImport.Name = "buttonImport";
+            this.buttonImport.Size = new System.Drawing.Size(175, 23);
+            this.buttonImport.TabIndex = 17;
+            this.buttonImport.Text = "Import Questions";
+            this.buttonImport.UseVisualStyleBackColor = true;
+            this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
             // 
             // label7
             // 
@@ -280,7 +294,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 78);
+            this.label6.Location = new System.Drawing.Point(5, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 15);
             this.label6.TabIndex = 18;
@@ -289,7 +303,7 @@
             // comboBoxModules
             // 
             this.comboBoxModules.FormattingEnabled = true;
-            this.comboBoxModules.Location = new System.Drawing.Point(6, 96);
+            this.comboBoxModules.Location = new System.Drawing.Point(5, 86);
             this.comboBoxModules.Name = "comboBoxModules";
             this.comboBoxModules.Size = new System.Drawing.Size(175, 23);
             this.comboBoxModules.TabIndex = 17;
@@ -317,6 +331,16 @@
             this.textBoxQuizName.Name = "textBoxQuizName";
             this.textBoxQuizName.Size = new System.Drawing.Size(175, 23);
             this.textBoxQuizName.TabIndex = 15;
+            // 
+            // buttonLoadAPIQuiz
+            // 
+            this.buttonLoadAPIQuiz.Location = new System.Drawing.Point(6, 149);
+            this.buttonLoadAPIQuiz.Name = "buttonLoadAPIQuiz";
+            this.buttonLoadAPIQuiz.Size = new System.Drawing.Size(175, 23);
+            this.buttonLoadAPIQuiz.TabIndex = 20;
+            this.buttonLoadAPIQuiz.Text = "Load API Questions";
+            this.buttonLoadAPIQuiz.UseVisualStyleBackColor = true;
+            this.buttonLoadAPIQuiz.Click += new System.EventHandler(this.buttonLoadAPIQuiz_Click);
             // 
             // quizForm
             // 
@@ -365,5 +389,7 @@
         private Button buttonAddToModule;
         private Label label8;
         private NumericUpDown numericUpDownMarks;
+        private Button buttonImport;
+        private Button buttonLoadAPIQuiz;
     }
 }

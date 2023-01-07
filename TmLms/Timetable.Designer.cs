@@ -35,6 +35,7 @@
             this.timetablePanel = new System.Windows.Forms.Panel();
             this.Student = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.buttonApprove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxCourses
@@ -97,11 +98,22 @@
             this.comboBox1.TabIndex = 6;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // buttonApprove
+            // 
+            this.buttonApprove.Location = new System.Drawing.Point(461, 24);
+            this.buttonApprove.Name = "buttonApprove";
+            this.buttonApprove.Size = new System.Drawing.Size(150, 23);
+            this.buttonApprove.TabIndex = 8;
+            this.buttonApprove.Text = "Approve Selection";
+            this.buttonApprove.UseVisualStyleBackColor = true;
+            this.buttonApprove.Click += new System.EventHandler(this.buttonApprove_Click);
+            // 
             // Timetable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonApprove);
             this.Controls.Add(this.Student);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.timetablePanel);
@@ -126,5 +138,6 @@
         private Panel timetablePanel;
         private Label Student;
         private ComboBox comboBox1;
+        private Button buttonApprove;
     }
 }
